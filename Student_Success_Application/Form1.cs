@@ -12,7 +12,9 @@ namespace Student_Success_Application
         private void btn_add_student_Click(object sender, EventArgs e)
         {
             // When this button is cliked, the data will be displayed in the listview.
-            string[] row = { textBox_student_name.Text, comboBox_major.Text,
+            int student_id = new Random().Next(10000000, 99999999);
+
+            string[] row = { student_id.ToString(), textBox_student_name.Text, comboBox_major.Text,
                     comboBox_year.Text, textBox_GPA.Text};
             ListViewItem listViewItem = new ListViewItem(row);
             listView_students.Items.Add(listViewItem);
