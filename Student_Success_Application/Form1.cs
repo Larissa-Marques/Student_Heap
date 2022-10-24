@@ -37,5 +37,11 @@ namespace Student_Success_Application
                 listView_students.Items.Remove(listView_students.SelectedItems[0]);
             }
         }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            // When this button is clicked, it will close the application.
+            this.Close();
+        }
     }
 }
