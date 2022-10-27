@@ -34,8 +34,6 @@
             this.columnHeader_Major = new System.Windows.Forms.ColumnHeader();
             this.columnHeader_year = new System.Windows.Forms.ColumnHeader();
             this.columnHeader_GPA = new System.Windows.Forms.ColumnHeader();
-            this.lbl_percentage = new System.Windows.Forms.Label();
-            this.textBox_percentage = new System.Windows.Forms.TextBox();
             this.lbl_student_name = new System.Windows.Forms.Label();
             this.textBox_student_name = new System.Windows.Forms.TextBox();
             this.lbl_major = new System.Windows.Forms.Label();
@@ -46,8 +44,8 @@
             this.textBox_GPA = new System.Windows.Forms.TextBox();
             this.btn_add_student = new System.Windows.Forms.Button();
             this.btn_clear = new System.Windows.Forms.Button();
-            this.btn_remove_record = new System.Windows.Forms.Button();
             this.btn_close = new System.Windows.Forms.Button();
+            this.btn_max_gpa = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView_students
@@ -89,23 +87,6 @@
             // 
             this.columnHeader_GPA.Text = "GPA";
             this.columnHeader_GPA.Width = 100;
-            // 
-            // lbl_percentage
-            // 
-            this.lbl_percentage.AutoSize = true;
-            this.lbl_percentage.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_percentage.Location = new System.Drawing.Point(416, 83);
-            this.lbl_percentage.Name = "lbl_percentage";
-            this.lbl_percentage.Size = new System.Drawing.Size(137, 17);
-            this.lbl_percentage.TabIndex = 1;
-            this.lbl_percentage.Text = "Enter Percentage";
-            // 
-            // textBox_percentage
-            // 
-            this.textBox_percentage.Location = new System.Drawing.Point(566, 78);
-            this.textBox_percentage.Name = "textBox_percentage";
-            this.textBox_percentage.Size = new System.Drawing.Size(125, 27);
-            this.textBox_percentage.TabIndex = 2;
             // 
             // lbl_student_name
             // 
@@ -215,21 +196,10 @@
             this.btn_clear.UseVisualStyleBackColor = true;
             this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
-            // btn_remove_record
-            // 
-            this.btn_remove_record.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_remove_record.Location = new System.Drawing.Point(416, 182);
-            this.btn_remove_record.Name = "btn_remove_record";
-            this.btn_remove_record.Size = new System.Drawing.Size(137, 29);
-            this.btn_remove_record.TabIndex = 13;
-            this.btn_remove_record.Text = "Remove Record";
-            this.btn_remove_record.UseVisualStyleBackColor = true;
-            this.btn_remove_record.Click += new System.EventHandler(this.btn_remove_record_Click);
-            // 
             // btn_close
             // 
             this.btn_close.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_close.Location = new System.Drawing.Point(566, 182);
+            this.btn_close.Location = new System.Drawing.Point(322, 182);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(125, 29);
             this.btn_close.TabIndex = 14;
@@ -237,13 +207,24 @@
             this.btn_close.UseVisualStyleBackColor = true;
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
+            // btn_max_gpa
+            // 
+            this.btn_max_gpa.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_max_gpa.Location = new System.Drawing.Point(462, 182);
+            this.btn_max_gpa.Name = "btn_max_gpa";
+            this.btn_max_gpa.Size = new System.Drawing.Size(125, 29);
+            this.btn_max_gpa.TabIndex = 15;
+            this.btn_max_gpa.Text = "Max GPA";
+            this.btn_max_gpa.UseVisualStyleBackColor = true;
+            this.btn_max_gpa.Click += new System.EventHandler(this.btn_max_gpa_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 532);
+            this.Controls.Add(this.btn_max_gpa);
             this.Controls.Add(this.btn_close);
-            this.Controls.Add(this.btn_remove_record);
             this.Controls.Add(this.btn_clear);
             this.Controls.Add(this.btn_add_student);
             this.Controls.Add(this.textBox_GPA);
@@ -254,8 +235,6 @@
             this.Controls.Add(this.lbl_major);
             this.Controls.Add(this.textBox_student_name);
             this.Controls.Add(this.lbl_student_name);
-            this.Controls.Add(this.textBox_percentage);
-            this.Controls.Add(this.lbl_percentage);
             this.Controls.Add(this.listView_students);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -267,8 +246,6 @@
         #endregion
 
         private ListView listView_students;
-        private Label lbl_percentage;
-        private TextBox textBox_percentage;
         private ColumnHeader columnH_StudentID;
         private ColumnHeader columnH_student_name;
         private ColumnHeader columnHeader_Major;
@@ -284,7 +261,7 @@
         private TextBox textBox_GPA;
         private Button btn_add_student;
         private Button btn_clear;
-        private Button btn_remove_record;
         private Button btn_close;
+        private Button btn_max_gpa;
     }
 }

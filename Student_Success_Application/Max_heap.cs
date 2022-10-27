@@ -8,8 +8,8 @@ namespace Student_Heap
 {
     class Max_heap
     {
-        Node root;
-        Node insert_pos;
+        public Node root;
+        public Node insert_pos;
 
         public Max_heap(Node node)
         {
@@ -42,7 +42,7 @@ namespace Student_Heap
             {
                 if (n.parent.data < n.data)
                 {
-                    int gpa = n.data;
+                    decimal gpa = n.data;
                     n.data = n.parent.data;
                     n.parent.data = gpa;
 
@@ -79,23 +79,6 @@ namespace Student_Heap
                     insert_pos = node;
                     break;
                 }
-            }
-        }
-        public void bfs_traversal()
-        {
-            Node node;
-
-            Queue<Node> q = new Queue<Node>();
-            q.Enqueue(root);
-            while (q.Count >0)
-            {
-                node = q.Dequeue();
-                Console.Write(node.data + "");
-
-                if (node.left != null)
-                    q.Enqueue(node.left);
-                if (node.right != null)
-                    q.Enqueue(node.right);
             }
         }
     }

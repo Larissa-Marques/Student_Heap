@@ -12,9 +12,9 @@ namespace Student_Heap
         public Node right;
         public Node parent;
 
-        public int data;
+        public decimal data;
 
-        public Node(int data)
+        public Node(decimal data)
         {
             this.data = data;
         }
