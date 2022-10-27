@@ -2,81 +2,74 @@
 {
     public class Node
     {
-        public decimal data;
+        public decimal gpa;
         public Node left;
         public Node right;
         public Node parent;
 
-        public Node(decimal data)
+        public Node(decimal gpa)
         {
-            this.data = data;
+            this.gpa = gpa;
         }
     }
 
     class Max_heap
     {
         public Node root;
-        public Node current;
+        public Node current_parent;
 
         public Max_heap(Node node)
         {
             root = node;
-            current = node;
+            current_parent = node;
         }
 
         public void insert(Node node)
         {
-            if (current.left == null)
+            if (current_parent.left == null)
             {
-                current.left = node;
-                node.parent = current;
+                current_parent.left = node;
+                node.parent = current_parent;
             }
             else
             {
-                current.right = node;
-                node.parent = current;
-                adjust_insert_pos();
+                current_parent.right = node;
+                node.parent = current_parent;
+                fix_current_parent();
             }
-            balance_heap(node);
-        }
 
-        public void balance_heap(Node node)
-        {
+            // Balance the heap
             while (node.parent != null)
             {
-                if (node.parent.data < node.data)
+                if (node.parent.gpa < node.gpa)
                 {
-                    decimal gpa = node.data;
-                    node.data = node.parent.data;
-                    node.parent.data = gpa;
+                    decimal gpa = node.gpa;
+                    node.gpa = node.parent.gpa;
+                    node.parent.gpa = gpa;
                     node = node.parent;
                 }
                 else break;
             }
         }
 
-        public void adjust_insert_pos()
+        private void fix_current_parent()
         {
             Node node;
-
             Queue<Node> queue = new Queue<Node>();
             queue.Enqueue(root);
             while (queue.Count > 0)
             {
                 node = queue.Dequeue();
-
                 if (node.left != null) queue.Enqueue(node.left);
                 else
                 {
-                    current = node;
+                    current_parent = node;
                     break;
                 }
-
-                if (node.right != null)
-                    queue.Enqueue(node.right);
+                if (node.right != null) queue.Enqueue(node.right);
                 else
                 {
-                    current = node;
+                    current_parent = node;
                     break;
                 }
             }

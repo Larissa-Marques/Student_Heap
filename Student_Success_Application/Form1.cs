@@ -22,7 +22,7 @@ namespace Student_Success_Application
 
         private void btn_add_student_Click(object sender, EventArgs e)
         {
-            // When this button is cliked, the data will be displayed in the listview.
+            // When this button is cliked, the gpa will be displayed in the listview.
             int student_id = new Random().Next(10000000, 99999999);
             decimal gpa = Convert.ToDecimal(textBox_GPA.Text);
 
@@ -53,7 +53,7 @@ namespace Student_Success_Application
         private void btn_max_gpa_Click(object sender, EventArgs e)
         {
             if (max_heap == null) MessageBox.Show("No Student Records Yet!");
-            else MessageBox.Show(Convert.ToString(max_heap.root.data));
+            else MessageBox.Show(Convert.ToString(max_heap.root.gpa));
         }
     }
 }
