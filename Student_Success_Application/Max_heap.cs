@@ -1,82 +1,82 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Student_Heap
+﻿namespace GPA_Heap
 {
+    public class Node
+    {
+        public decimal data;
+        public Node left;
+        public Node right;
+        public Node parent;
+
+        public Node(decimal data)
+        {
+            this.data = data;
+        }
+    }
+
     class Max_heap
     {
         public Node root;
-        public Node insert_pos;
+        public Node current;
 
         public Max_heap(Node node)
         {
             root = node;
-            insert_pos = node;
+            current = node;
         }
-        public void insert(Node n)
+
+        public void insert(Node node)
         {
-            if (insert_pos.left == null)
+            if (current.left == null)
             {
-                insert_pos.left = n;
-                n.parent = insert_pos;
-
-                balance_heap(n);
-
-                return;
+                current.left = node;
+                node.parent = current;
             }
             else
             {
-                insert_pos.right = n;
-                n.parent = insert_pos;
-
+                current.right = node;
+                node.parent = current;
                 adjust_insert_pos();
-                balance_heap(n);
             }
+            balance_heap(node);
         }
-        public void balance_heap(Node n)
-        {
-            while (n.parent != null)
-            {
-                if (n.parent.data < n.data)
-                {
-                    decimal gpa = n.data;
-                    n.data = n.parent.data;
-                    n.parent.data = gpa;
 
-                    n = n.parent;
-                }
-                else
+        public void balance_heap(Node node)
+        {
+            while (node.parent != null)
+            {
+                if (node.parent.data < node.data)
                 {
-                    break;
+                    decimal gpa = node.data;
+                    node.data = node.parent.data;
+                    node.parent.data = gpa;
+                    node = node.parent;
                 }
+                else break;
             }
         }
+
         public void adjust_insert_pos()
         {
             Node node;
 
-            Queue<Node> q = new Queue<Node>();
-            q.Enqueue(root);
-            while (q.Count > 0)
+            Queue<Node> queue = new Queue<Node>();
+            queue.Enqueue(root);
+            while (queue.Count > 0)
             {
-                node = q.Dequeue();
+                node = queue.Dequeue();
 
-                if (node.left != null)
-                    q.Enqueue(node.left);
+                if (node.left != null) queue.Enqueue(node.left);
                 else
                 {
-                    insert_pos = node;
+                    current = node;
                     break;
                 }
 
                 if (node.right != null)
-                    q.Enqueue(node.right);
+                    queue.Enqueue(node.right);
                 else
                 {
-                    insert_pos = node;
+                    current = node;
                     break;
                 }
             }
